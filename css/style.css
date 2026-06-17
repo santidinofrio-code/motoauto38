@@ -183,7 +183,7 @@ a { text-decoration: none; color: inherit; }
   border-bottom: 1px solid var(--black-border);
   background-image: url('../img/hero-bg.jpg');
   background-size: cover;
-  background-position: center 30%;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
