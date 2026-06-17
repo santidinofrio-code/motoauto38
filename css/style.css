@@ -3,26 +3,30 @@
    Paleta basada en logo oficial
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Racing+Sans+One&display=swap');
 
 /* --- TOKENS --- */
 :root {
-  --yellow:      #F5C800;
-  --yellow-dark: #C8920A;
-  --black:       #0F0F0F;
-  --black-mid:   #1A1A1A;
-  --black-card:  #222222;
-  --black-border:#2E2E2E;
-  --white:       #FFFFFF;
-  --gray-text:   #AAAAAA;
-  --gray-muted:  #666666;
+  /* Paleta extraída del logo */
+  --yellow:      #F5C800;   /* amarillo principal del 38 */
+  --yellow-dark: #C8920A;   /* dorado/ocre de las diagonales */
+  --yellow-glow: rgba(245,200,0,0.12);
+  --black:       #0C0C0C;   /* negro profundo */
+  --black-mid:   #161616;
+  --black-card:  #1E1E1E;
+  --black-border:#2A2A2A;
+  --white:       #F8F8F8;   /* blanco ligeramente cálido como el logo */
+  --gray-text:   #B0B0B0;
+  --gray-muted:  #606060;
 
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body:    'Barlow', sans-serif;
+  /* Tipografías */
+  --font-hero:    'Racing Sans One', sans-serif;   /* títulos principales */
+  --font-display: 'Barlow Condensed', sans-serif;  /* subtítulos, labels, UI */
+  --font-body:    'Barlow', sans-serif;             /* cuerpo, párrafos */
 
-  --radius-sm:  4px;
+  --radius-sm:  3px;
   --radius-md:  8px;
-  --radius-lg:  12px;
+  --radius-lg:  14px;
 
   --transition: 0.18s ease;
 }
@@ -50,9 +54,15 @@ a { text-decoration: none; color: inherit; }
   line-height: 0.92;
   letter-spacing: -0.5px;
 }
-.display-xl { font-size: clamp(56px, 9vw, 96px); }
-.display-lg { font-size: clamp(40px, 6vw, 64px); }
-.display-md { font-size: clamp(28px, 4vw, 42px); }
+/* Hero title usa Racing Sans One - tiene el espíritu del logo */
+.display-xl {
+  font-family: var(--font-hero);
+  font-size: clamp(52px, 8.5vw, 92px);
+  font-weight: 400; /* Racing Sans One solo tiene 400 */
+  letter-spacing: -1px;
+}
+.display-lg { font-size: clamp(38px, 5.5vw, 60px); }
+.display-md { font-size: clamp(26px, 3.5vw, 40px); }
 
 .eyebrow {
   font-size: 11px;
@@ -124,7 +134,7 @@ a { text-decoration: none; color: inherit; }
   height: 64px;
   background: rgba(15,15,15,0.96);
   backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--yellow-dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -136,13 +146,13 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 10px;
 }
-.navbar-logo img { height: 40px; width: auto; }
+.navbar-logo img { height: 44px; width: auto; object-fit: contain; }
 .navbar-logo-text {
-  font-family: var(--font-display);
+  font-family: var(--font-hero);
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 .navbar-logo-text span { color: var(--yellow); }
 
@@ -178,12 +188,11 @@ a { text-decoration: none; color: inherit; }
   right: -1rem;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--font-display);
+  font-family: var(--font-hero);
   font-size: clamp(160px, 28vw, 320px);
-  font-weight: 900;
-  font-style: italic;
+  font-weight: 400;
   color: transparent;
-  -webkit-text-stroke: 1px #2a2a2a;
+  -webkit-text-stroke: 1px rgba(245,200,0,0.08);
   line-height: 1;
   pointer-events: none;
   user-select: none;
@@ -352,7 +361,7 @@ a { text-decoration: none; color: inherit; }
 
 .card-body { padding: 1.25rem; }
 .card-type { font-size: 10px; color: var(--gray-muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px; }
-.card-name { font-family: var(--font-display); font-size: 22px; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; line-height: 1.1; }
+.card-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; line-height: 1.1; letter-spacing: 0.02em; }
 .card-year { font-size: 13px; color: var(--gray-muted); margin-bottom: 1rem; }
 
 .card-price {
@@ -553,16 +562,24 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
 }
 .about-logo-box {
-  background: var(--black-card);
-  border: 1px solid var(--black-border);
-  border-radius: var(--radius-lg);
+  background: transparent;
+  border: none;
   height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  padding: 2rem;
+  position: relative;
 }
-.about-logo-box img { max-height: 220px; width: auto; }
+/* Sutil glow amarillo detrás del logo */
+.about-logo-box::before {
+  content: '';
+  position: absolute;
+  inset: 20%;
+  background: radial-gradient(ellipse, rgba(245,200,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-logo-box img { max-height: 280px; width: auto; position: relative; z-index: 1; }
 .about-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
 .about-point { display: flex; gap: 1rem; align-items: flex-start; }
 .about-dot {
@@ -673,9 +690,9 @@ a { text-decoration: none; color: inherit; }
 }
 .sidebar-logo img { height: 36px; width: auto; }
 .sidebar-logo-text {
-  font-family: var(--font-display);
+  font-family: var(--font-hero);
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
 }
 .sidebar-logo-text span { color: var(--yellow); }

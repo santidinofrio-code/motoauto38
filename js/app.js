@@ -7,7 +7,7 @@ const MA38 = {
   // ---- AUTH (session only) ----
   AUTH_KEY:   'ma38_auth',
   ADMIN_USER: 'admin',
-  ADMIN_PASS: 'motoauto38',
+  ADMIN_PASS: '46111705Lobo!',
 
   login(user, pass) {
     if (user === this.ADMIN_USER && pass === this.ADMIN_PASS) {
@@ -122,7 +122,7 @@ async function initCatalog() {
           </div>
         </div>
         <div class="card-actions">
-          <a href="https://wa.me/5491100000000?text=${waMsg}"
+          <a href="https://wa.me/542214816242?text=${waMsg}"
              target="_blank" class="btn btn-yellow btn-sm" style="flex:1" onclick="event.stopPropagation()">
             Consultar
           </a>
@@ -168,7 +168,7 @@ function openModal(v) {
   renderModalGallery(overlay, galleryImages, 0);
 
   const waMsg = encodeURIComponent(`Hola! Me interesa el ${v.brand} ${v.model} ${v.year}`);
-  overlay.querySelector('.modal-wa-btn').href = `https://wa.me/5491100000000?text=${waMsg}`;
+  overlay.querySelector('.modal-wa-btn').href = `https://wa.me/542214816242?text=${waMsg}`;
 
   const videoWrap = overlay.querySelector('.modal-video');
   if (v.video) {
