@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotoAuto38 — Usados & 0km · Buenos Aires</title>
+  <meta name="description" content="Agencia de autos, motos y camionetas usados y 0km en Buenos Aires. Atención directa, precios reales.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================== NAV ======================== -->
+<nav class="navbar">
+  <div class="navbar-logo">
+    <img src="img/logo.jpg" alt="MotoAuto38" onerror="this.style.display='none'">
+    <div class="navbar-logo-text">Moto<span>Auto</span><span style="color:var(--white)">38</span></div>
+  </div>
+  <ul class="navbar-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li>
+      <a href="https://wa.me/5491100000000" target="_blank" class="btn btn-yellow btn-sm">
+        WhatsApp
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ======================== HERO ======================== -->
+<section class="hero" id="inicio">
+  <div class="hero-stripe"></div>
+  <div class="hero-bg-number">38</div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Agencia de vehículos · Buenos Aires</span>
+    <h1 class="display display-xl hero-title">
+      Tu próximo<br>vehículo<br><em>te espera.</em>
+    </h1>
+    <p class="hero-sub">
+      Autos, motos y camionetas seleccionados con criterio.
+      Trato directo, precios reales, sin vueltas.
+    </p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn btn-yellow btn-lg">Ver catálogo</a>
+      <a href="#contacto" class="btn btn-outline btn-lg">Contactar</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">+100</div>
+        <div class="stat-label">Vehículos vendidos</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Tipos de vehículos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CATALOG ======================== -->
+<section class="section section-darker" id="catalogo">
+  <div class="section-header">
+    <div class="eyebrow">Lo que tenemos</div>
+    <h2 class="display display-lg">Catálogo</h2>
+    <p class="section-desc">Unidades seleccionadas, revisadas y listas para entregar. Stock actualizado constantemente.</p>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-btn active" data-filter="todos">Todos</button>
+    <button class="filter-btn" data-filter="auto">Autos</button>
+    <button class="filter-btn" data-filter="moto">Motos</button>
+    <button class="filter-btn" data-filter="camioneta">Camionetas</button>
+  </div>
+
+  <div class="vehicle-grid" id="vehicle-grid"></div>
+</section>
+
+<!-- ======================== CTA BAR ======================== -->
+<div class="cta-bar">
+  <div class="cta-bar-text">¿Encontraste lo que buscabas?</div>
+  <a href="https://wa.me/5491100000000" target="_blank" class="btn btn-black btn-lg">
+    Escribinos por WhatsApp
+  </a>
+</div>
+
+<!-- ======================== ABOUT ======================== -->
+<section class="section section-dark" id="nosotros">
+  <div class="about-grid">
+    <div class="about-logo-box">
+      <img src="img/logo.jpg" alt="MotoAuto38" onerror="this.outerHTML='<div style=\'text-align:center\'><div style=\'font-size:80px\'>🏁</div><div class=\'label-muted\' style=\'margin-top:1rem\'>MotoAuto38 · Est. 2014</div></div>'">
+    </div>
+    <div>
+      <div class="eyebrow">Quiénes somos</div>
+      <h2 class="display display-lg" style="margin: 0.5rem 0 1rem">Una agencia<br>de confianza</h2>
+      <p class="section-desc">
+        Nacimos como un emprendimiento familiar con una idea simple: vender vehículos con honestidad.
+        Hoy seguimos igual — trato directo, sin intermediarios y con el mismo compromiso de siempre.
+      </p>
+      <div class="about-points">
+        <div class="about-point">
+          <div class="about-dot"></div>
+          <div>
+            <div class="about-point-title">Revisión previa a la venta</div>
+            <div class="about-point-desc">Cada unidad pasa por un control mecánico antes de publicarse. Lo que ves es lo que hay.</div>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-dot"></div>
+          <div>
+            <div class="about-point-title">Permutas y financiamiento</div>
+            <div class="about-point-desc">Aceptamos permutas y te asesoramos en el financiamiento para que llegues a tu próximo vehículo.</div>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-dot"></div>
+          <div>
+            <div class="about-point-title">Atención personalizada</div>
+            <div class="about-point-desc">No somos un portal. Hablás con la persona que conoce cada vehículo del inventario.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CONTACT ======================== -->
+<section class="section section-darker" id="contacto" style="text-align:center">
+  <div class="eyebrow">Estamos para ayudarte</div>
+  <h2 class="display display-lg" style="margin: 0.5rem 0 0.75rem">Contacto</h2>
+  <p class="section-desc" style="margin: 0 auto 3rem">
+    Consultá por cualquier unidad, pedí más fotos o coordiná una visita. Respondemos rápido.
+  </p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">💬</div>
+      <div class="contact-card-label">WhatsApp</div>
+      <div class="contact-card-val">+54 9 11 0000-0000</div>
+      <a href="https://wa.me/5491100000000" target="_blank" class="contact-card-link">Escribir ahora →</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📸</div>
+      <div class="contact-card-label">Instagram</div>
+      <div class="contact-card-val">@motoauto38</div>
+      <a href="https://instagram.com/motoauto38" target="_blank" class="contact-card-link">Ver perfil →</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div class="contact-card-label">Ubicación</div>
+      <div class="contact-card-val">Buenos Aires, AR</div>
+      <a href="#" class="contact-card-link">Ver en mapa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
+<footer class="footer">
+  <div class="navbar-logo-text" style="font-size:18px">Moto<span style="color:var(--yellow)">Auto</span>38</div>
+  <div class="footer-copy">© 2025 MotoAuto38. Todos los derechos reservados.</div>
+  <div class="footer-links">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="admin/index.html" style="color:#333">·</a>
+  </div>
+</footer>
+
+<!-- ======================== VEHICLE MODAL ======================== -->
+<div class="modal-overlay" id="vehicle-modal">
+  <div class="modal">
+    <button class="modal-close">✕</button>
+
+    <div class="modal-gallery">
+      <img class="modal-main-img" src="" alt="" style="display:none">
+      <div class="modal-gallery-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:0.2">🚗</div>
+      <button class="gallery-nav gallery-prev">‹</button>
+      <button class="gallery-nav gallery-next">›</button>
+      <span class="gallery-counter"></span>
+    </div>
+    <div class="gallery-thumbs" style="display:none"></div>
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-type"></div>
+          <div class="modal-name"></div>
+          <div class="modal-year"></div>
+        </div>
+        <div class="modal-price-block">
+          <div class="modal-price"></div>
+          <div class="modal-currency"></div>
+        </div>
+      </div>
+
+      <div class="modal-specs-grid">
+        <div class="modal-spec"><div class="modal-spec-label">Kilómetros</div><div class="modal-spec-val" id="ms-km">—</div></div>
+        <div class="modal-spec"><div class="modal-spec-label">Color</div><div class="modal-spec-val" id="ms-color">—</div></div>
+        <div class="modal-spec"><div class="modal-spec-label">Combustible</div><div class="modal-spec-val" id="ms-fuel">—</div></div>
+        <div class="modal-spec"><div class="modal-spec-label">Transmisión</div><div class="modal-spec-val" id="ms-trans">—</div></div>
+        <div class="modal-spec"><div class="modal-spec-label">Puertas</div><div class="modal-spec-val" id="ms-doors">—</div></div>
+        <div class="modal-spec"><div class="modal-spec-label">Service</div><div class="modal-spec-val" id="ms-service">—</div></div>
+      </div>
+
+      <div class="modal-desc-title">Descripción</div>
+      <p class="modal-desc"></p>
+
+      <div class="modal-video" style="display:none">
+        <div class="modal-desc-title" style="margin-bottom:0.75rem">Video del vehículo</div>
+        <video controls></video>
+      </div>
+
+      <div class="modal-cta">
+        <a href="#" target="_blank" class="btn btn-yellow btn-lg modal-wa-btn">
+          💬 Consultar por WhatsApp
+        </a>
+        <a href="https://instagram.com/motoauto38" target="_blank" class="btn btn-outline btn-lg">
+          📸 Ver en Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

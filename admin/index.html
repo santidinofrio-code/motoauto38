@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotoAuto38 — Panel de Administración</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo">
+      <img src="../img/logo.jpg" alt="" onerror="this.style.display='none'">
+      <div>
+        <div class="sidebar-logo-text">Moto<span>Auto</span>38</div>
+      </div>
+      <span class="sidebar-admin-badge">Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-item active" data-section="dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </div>
+      <div class="sidebar-nav-item" data-section="vehicles">
+        <span class="nav-icon">🚗</span> Vehículos
+      </div>
+      <div class="sidebar-nav-item" data-section="new">
+        <span class="nav-icon">➕</span> Nuevo vehículo
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center" id="logout-btn">
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+
+    <!-- TOPBAR -->
+    <div class="admin-topbar">
+      <div class="admin-topbar-title" id="topbar-title">Dashboard</div>
+      <div class="admin-topbar-actions">
+        <a href="../index.html" target="_blank" class="btn btn-ghost btn-sm">Ver sitio →</a>
+        <button class="btn btn-yellow btn-sm" id="new-vehicle-btn">+ Nuevo vehículo</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ====== DASHBOARD ====== -->
+      <div id="section-dashboard">
+        <div class="stats-grid" id="stats-grid"></div>
+
+        <div style="margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between">
+          <div class="eyebrow">Últimos vehículos cargados</div>
+          <button class="btn btn-ghost btn-sm" onclick="showSection('vehicles')">Ver todos →</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="dashboard-table"></table>
+        </div>
+      </div>
+
+      <!-- ====== VEHICLES LIST ====== -->
+      <div id="section-vehicles" style="display:none">
+        <div style="margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div>
+            <div class="eyebrow">Inventario completo</div>
+            <div style="font-size:13px;color:var(--gray-muted);margin-top:2px" id="vehicle-count-label"></div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input type="text" class="form-input" placeholder="Buscar..." id="search-input" style="width:180px">
+            <select class="form-select" id="filter-type" style="width:140px">
+              <option value="">Todos los tipos</option>
+              <option value="auto">Autos</option>
+              <option value="moto">Motos</option>
+              <option value="camioneta">Camionetas</option>
+            </select>
+            <select class="form-select" id="filter-status" style="width:140px">
+              <option value="">Todos los estados</option>
+              <option value="available">Disponibles</option>
+              <option value="reserved">Reservados</option>
+              <option value="sold">Vendidos</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="vehicles-table"></table>
+        </div>
+      </div>
+
+      <!-- ====== VEHICLE FORM ====== -->
+      <div id="section-new" style="display:none">
+        <div style="margin-bottom:2rem">
+          <div class="eyebrow" id="form-eyebrow">Nuevo vehículo</div>
+          <h2 class="display display-md" id="form-title" style="margin-top:0.25rem">Cargar vehículo</h2>
+        </div>
+
+        <div style="max-width:800px">
+
+          <!-- Información básica -->
+          <div class="form-section">
+            <div class="form-section-title">Información básica</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Tipo *</label>
+                <select class="form-select" id="f-type">
+                  <option value="auto">Automóvil</option>
+                  <option value="moto">Motocicleta</option>
+                  <option value="camioneta">Camioneta</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Estado *</label>
+                <select class="form-select" id="f-status">
+                  <option value="available">Disponible</option>
+                  <option value="reserved">Reservado</option>
+                  <option value="sold">Vendido</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Marca *</label>
+                <input type="text" class="form-input" id="f-brand" placeholder="Toyota, Honda, Ford...">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Modelo *</label>
+                <input type="text" class="form-input" id="f-model" placeholder="Corolla, CB650R, Ranger...">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Versión</label>
+                <input type="text" class="form-input" id="f-version" placeholder="XEi 2.0, TDi, Sport...">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Año *</label>
+                <input type="number" class="form-input" id="f-year" placeholder="2023" min="1960" max="2030">
+              </div>
+            </div>
+          </div>
+
+          <!-- Características técnicas -->
+          <div class="form-section">
+            <div class="form-section-title">Características técnicas</div>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Kilómetros *</label>
+                <input type="number" class="form-input" id="f-km" placeholder="48000" min="0">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Color</label>
+                <input type="text" class="form-input" id="f-color" placeholder="Blanco Perla">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Puertas</label>
+                <select class="form-select" id="f-doors">
+                  <option value="">— (motos)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Combustible</label>
+                <select class="form-select" id="f-fuel">
+                  <option value="Nafta">Nafta</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="GNC">GNC</option>
+                  <option value="Nafta/GNC">Nafta + GNC</option>
+                  <option value="Eléctrico">Eléctrico</option>
+                  <option value="Híbrido">Híbrido</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Transmisión</label>
+                <select class="form-select" id="f-trans">
+                  <option value="Manual">Manual</option>
+                  <option value="Automática">Automática</option>
+                  <option value="CVT">CVT</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Service al día</label>
+                <select class="form-select" id="f-service">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:1rem">
+              <label class="form-label">Detalle del service</label>
+              <input type="text" class="form-input" id="f-service-detail" placeholder="Ej: Cadena nueva, aceite cambiado en 45.000 km">
+            </div>
+          </div>
+
+          <!-- Precio -->
+          <div class="form-section">
+            <div class="form-section-title">Precio</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Precio *</label>
+                <div class="price-input-wrap">
+                  <span class="price-prefix">$</span>
+                  <input type="number" class="form-input" id="f-price" placeholder="14800000" min="0">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Moneda</label>
+                <select class="form-select" id="f-currency">
+                  <option value="ARS">ARS (Pesos)</option>
+                  <option value="USD">USD (Dólares)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Descripción -->
+          <div class="form-section">
+            <div class="form-section-title">Descripción</div>
+            <div class="form-group">
+              <label class="form-label">Descripción del vehículo</label>
+              <textarea class="form-textarea" id="f-description" rows="4"
+                placeholder="Describí el estado del vehículo, equipamiento, historial, observaciones..."></textarea>
+            </div>
+            <div class="form-group" style="margin-top:1rem;flex-direction:row;align-items:center;gap:10px">
+              <input type="checkbox" id="f-featured" style="width:18px;height:18px;accent-color:var(--yellow)">
+              <label for="f-featured" class="form-label" style="margin:0;cursor:pointer">Marcar como destacado</label>
+            </div>
+          </div>
+
+          <!-- Imágenes -->
+          <div class="form-section">
+            <div class="form-section-title">Fotos del vehículo</div>
+            <div class="upload-zone" id="upload-zone">
+              <div class="upload-icon">📷</div>
+              <div class="upload-title">Arrastrá las fotos acá o hacé clic para seleccionar</div>
+              <div class="upload-sub">JPG, PNG · Máximo 10 fotos · La primera será la portada</div>
+              <input type="file" class="upload-input" id="f-images" multiple accept="image/*">
+            </div>
+            <div class="image-preview-grid" id="image-preview-grid"></div>
+          </div>
+
+          <!-- Video -->
+          <div class="form-section">
+            <div class="form-section-title">Video (opcional)</div>
+            <div class="upload-zone" id="video-zone">
+              <div class="upload-icon">🎥</div>
+              <div class="upload-title">Arrastrá un video o hacé clic para seleccionar</div>
+              <div class="upload-sub">MP4, MOV · Máximo 100MB</div>
+              <input type="file" class="upload-input" id="f-video" accept="video/*">
+            </div>
+            <div id="video-preview" style="margin-top:1rem;display:none">
+              <video id="video-preview-player" controls style="width:100%;border-radius:var(--radius-md);background:#000;max-height:280px"></video>
+              <button class="btn btn-ghost btn-sm" style="margin-top:8px" id="remove-video-btn">Quitar video</button>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div style="display:flex;gap:1rem;padding-top:1rem;border-top:1px solid var(--black-border)">
+            <button class="btn btn-yellow btn-lg" id="save-vehicle-btn">Guardar vehículo</button>
+            <button class="btn btn-outline" id="cancel-form-btn">Cancelar</button>
+          </div>
+          <input type="hidden" id="f-editing-id">
+
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </main>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="delete-modal">
+  <div class="modal" style="max-width:420px;padding:2rem;border-radius:var(--radius-lg)">
+    <div style="font-size:32px;text-align:center;margin-bottom:1rem">🗑️</div>
+    <h3 style="text-align:center;font-size:20px;margin-bottom:0.5rem">¿Eliminar vehículo?</h3>
+    <p style="text-align:center;color:var(--gray-text);font-size:14px;margin-bottom:2rem">Esta acción no se puede deshacer.</p>
+    <div style="display:flex;gap:1rem">
+      <button class="btn btn-danger" style="flex:1;justify-content:center" id="confirm-delete-btn">Eliminar</button>
+      <button class="btn btn-outline" style="flex:1;justify-content:center" id="cancel-delete-btn">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/supabase.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>
