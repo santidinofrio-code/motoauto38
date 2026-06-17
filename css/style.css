@@ -181,9 +181,40 @@ a { text-decoration: none; color: inherit; }
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--black-border);
+  background-image: url('../img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
 }
 
-.hero-bg-number {
+/* Degradé negro desde la izquierda donde está el texto */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(12,12,12,0.97) 0%,
+    rgba(12,12,12,0.88) 35%,
+    rgba(12,12,12,0.55) 60%,
+    rgba(12,12,12,0.15) 100%
+  );
+  z-index: 0;
+}
+
+/* Degradé negro desde abajo para que el borde sea suave */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--black));
+  z-index: 0;
+}
+
+.hero-bg-number { z-index: 1;
   position: absolute;
   right: -1rem;
   top: 50%;
@@ -198,7 +229,7 @@ a { text-decoration: none; color: inherit; }
   user-select: none;
 }
 
-.hero-stripe {
+.hero-stripe { z-index: 1;
   position: absolute;
   top: 0; bottom: 0;
   width: 4px;
@@ -206,7 +237,7 @@ a { text-decoration: none; color: inherit; }
   left: 0;
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 640px; }
+.hero-content { position: relative; z-index: 2; max-width: 640px; }
 
 .hero-eyebrow {
   display: inline-block;
