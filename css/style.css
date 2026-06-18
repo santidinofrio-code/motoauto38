@@ -1094,3 +1094,7 @@ a { text-decoration: none; color: inherit; }
   .wa-float { bottom: 1.25rem; right: 1.25rem; width: 54px; height: 54px; }
   .wa-float svg { width: 26px; height: 26px; }
 }
+
+@media (max-width: 768px) {
+  #consignacion > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+}
