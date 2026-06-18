@@ -83,6 +83,20 @@
     <p class="section-desc">Unidades seleccionadas, revisadas y listas para entregar. Stock actualizado constantemente.</p>
   </div>
 
+  <!-- Búsqueda y filtros -->
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center">
+    <div style="position:relative;flex:1;min-width:200px;max-width:320px">
+      <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--gray-muted);pointer-events:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="catalog-search" class="form-input" placeholder="Buscar marca o modelo..." style="padding-left:38px;background:var(--black-card)">
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <input type="number" id="price-min" class="form-input" placeholder="Precio mín." style="width:140px;background:var(--black-card)">
+      <span style="color:var(--gray-muted);font-size:13px">—</span>
+      <input type="number" id="price-max" class="form-input" placeholder="Precio máx." style="width:140px;background:var(--black-card)">
+    </div>
+    <button class="btn btn-ghost btn-sm" id="clear-filters" style="display:none">✕ Limpiar</button>
+  </div>
+
   <div class="filter-row">
     <button class="filter-btn active" data-filter="todos">Todos</button>
     <button class="filter-btn" data-filter="auto">Autos</button>

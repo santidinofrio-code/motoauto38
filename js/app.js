@@ -63,11 +63,12 @@ async function initCatalog() {
     grid.innerHTML = list.map(v => buildCard(v)).join('');
     grid.querySelectorAll('.vehicle-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        // Don't navigate if clicking the WhatsApp button
         if (e.target.closest('.card-actions')) return;
         window.location.href = `vehiculo.html?id=${card.dataset.id}`;
       });
     });
+
+    updateClearBtn();
   }
 
   function buildCard(v) {
@@ -142,6 +143,48 @@ async function initCatalog() {
       render(btn.dataset.filter);
     });
   });
+
+  // Search input
+  const searchInput = document.getElementById('catalog-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      searchVal = searchInput.value.toLowerCase().trim();
+      render();
+    });
+  }
+
+  // Price filters
+  const priceMinInput = document.getElementById('price-min');
+  const priceMaxInput = document.getElementById('price-max');
+  if (priceMinInput) {
+    priceMinInput.addEventListener('input', () => {
+      priceMin = priceMinInput.value ? parseFloat(priceMinInput.value) : null;
+      render();
+    });
+  }
+  if (priceMaxInput) {
+    priceMaxInput.addEventListener('input', () => {
+      priceMax = priceMaxInput.value ? parseFloat(priceMaxInput.value) : null;
+      render();
+    });
+  }
+
+  // Clear filters
+  const clearBtn = document.getElementById('clear-filters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchVal = '';
+      priceMin = null;
+      priceMax = null;
+      activeFilter = 'todos';
+      if (searchInput) searchInput.value = '';
+      if (priceMinInput) priceMinInput.value = '';
+      if (priceMaxInput) priceMaxInput.value = '';
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.filter-btn[data-filter="todos"]').classList.add('active');
+      render();
+    });
+  }
 
   render('todos');
 }
