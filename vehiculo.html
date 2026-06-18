@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MotoAuto38 — Vehículo</title>
   <meta name="description" content="Detalle del vehículo en MotoAuto38, Ensenada.">
+  <!-- Open Graph base - se actualiza dinámicamente -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MotoAuto38">
+  <meta property="og:title" content="MotoAuto38 — Vehículo">
+  <meta property="og:description" content="Encontrá tu próximo vehículo en MotoAuto38, Ensenada.">
+  <meta property="og:image" content="https://spectacular-tulumba-1ad9bf.netlify.app/img/hero-bg.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:url" content="">
   <link rel="stylesheet" href="css/style.css">
   <style>
     .vehicle-page { max-width: 1100px; margin: 0 auto; padding: 2rem; }
@@ -469,6 +479,22 @@
 <script src="js/supabase.js"></script>
 <script src="js/app.js"></script>
 <script>
+
+  // Update OG meta tags dynamically for WhatsApp sharing
+  function updateOGTags(v) {
+    const url = window.location.href;
+    const title = `${v.brand} ${v.model} ${v.year} — MotoAuto38`;
+    const desc = `${v.brand} ${v.model} ${v.year} · ${Number(v.km).toLocaleString('es-AR')} km · ${v.color || ''} · $${Number(v.price).toLocaleString('es-AR')} ${v.currency}. MotoAuto38, Ensenada.`;
+    const image = v.images && v.images.length ? v.images[0] : 'https://spectacular-tulumba-1ad9bf.netlify.app/img/hero-bg.jpg';
+
+    document.title = title;
+    document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', image);
+    document.querySelector('meta[property="og:url"]').setAttribute('content', url);
+    document.querySelector('meta[name="description"]').setAttribute('content', desc);
+  }
+
   // Get vehicle ID from URL: /vehiculo.html?id=xxx
   const params  = new URLSearchParams(window.location.search);
   const vehicleId = params.get('id');
@@ -491,6 +517,7 @@
   function renderVehicle(v) {
     // Update page title & meta
     document.title = `${v.brand} ${v.model} ${v.year} — MotoAuto38`;
+    updateOGTags(v);
 
     // Type & name
     document.getElementById('v-type').textContent = MA38.typeLabel(v.type);
